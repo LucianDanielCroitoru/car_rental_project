@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28995a5-ebd8-4a0c-8437-ed68854a5498" name="Changes" comment="Create Car and Customer entities.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/sda/academy/repositories/CarRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sda/academy/repositories/CustomerRepository.java" afterDir="false" />
+    <list default="true" id="a28995a5-ebd8-4a0c-8437-ed68854a5498" name="Changes" comment="Hibernate configuration.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/sda/academy/entities/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,21 +26,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "LucianDanielCroitoru"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LucianDanielCroitoru&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/LucianDanielCroitoru/car_rental_project",
-    "accountId": "4aea61f4-603a-4b2c-9da0-a87db13d1071"
+    "accountId": "1f275ea8-3dd1-41cd-bb90-f3391432c276"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2lLFyURzpQx0J8oYi7isKTuj13x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -49,7 +51,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "new__branch",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/lucia/IdeaProjects/car_rental_project/src/main/java/sda/academy/Main.java"
@@ -80,15 +82,7 @@
       <option name="project" value="LOCAL" />
       <updated>1724952882131</updated>
     </task>
-    <task id="LOCAL-00003" summary="Create Car and Customer entities.">
-      <option name="closed" value="true" />
-      <created>1724953968098</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1724953968098</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,8 +99,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit!" />
     <MESSAGE value="Hibernate configuration." />
-    <MESSAGE value="Create Car and Customer entities." />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Car and Customer entities." />
+    <option name="LAST_COMMIT_MESSAGE" value="Hibernate configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
