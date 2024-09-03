@@ -3,8 +3,11 @@ package sda.academy.repositories;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import sda.academy.entities.Car;
 import sda.academy.util.HibernateUtil;
+
+import java.util.List;
 
 public class CarRepository {
 
@@ -36,6 +39,22 @@ public class CarRepository {
         session.delete(car);
         transaction.commit();
         session.close();
+    }
+
+    public List<Car> findAll() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Transaction transaction = session.getTransaction();
+
+        String hql = "from Car";
+        String hql2 = "SELECT c from Car c";
+        Query<Car> query = session.createQuery(hql, Car.class);
+        List<Car> cars = query.getResultList();
+
+        transaction.commit();
+        session.close();
+        return cars;
     }
 
     public Car findById(int id) {

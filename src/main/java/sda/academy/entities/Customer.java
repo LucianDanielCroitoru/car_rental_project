@@ -3,14 +3,12 @@ package sda.academy.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@Table (name = "Customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +17,6 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    @Id
+    @Column(unique = true)
     private int driverLicenseNumber;
 }
