@@ -3,7 +3,9 @@ package sda.academy.menu;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import sda.academy.entities.Car;
+import sda.academy.entities.Station;
 import sda.academy.repositories.CarRepository;
+import sda.academy.repositories.StationRepository;
 import sda.academy.util.HibernateUtil;
 
 import java.util.List;
@@ -61,10 +63,15 @@ public class CarMenu {
         String licensePlate = scanner.nextLine();
         System.out.println("Enter price per day for above model: ");
         int pricePerDay = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter the station's ID: ");
+        int station_id = Integer.parseInt(scanner.nextLine());
+        StationRepository stationRepository = new StationRepository();
+        Station station = stationRepository.findById(station_id);
         Car car = new Car();
         car.setModel(model);
         car.setLicensePlate(licensePlate);
         car.setPricePerDay(pricePerDay);
+        car.setStation(station);
         CarRepository carRepository = new CarRepository();
         carRepository.save(car);
     }
@@ -78,18 +85,23 @@ public class CarMenu {
         String licensePlate = scanner.nextLine();
         System.out.println("Edit price per day for above model: ");
         int pricePerDay = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter the station's ID: ");
+        int station_id = Integer.parseInt(scanner.nextLine());
+        StationRepository stationRepository = new StationRepository();
+        Station station = stationRepository.findById(station_id);
         CarRepository carRepository = new CarRepository();
         Car car = carRepository.findById(id);
         car.setModel(model);
         car.setLicensePlate(licensePlate);
         car.setPricePerDay(pricePerDay);
+        car.setStation(station);
         carRepository.update(car);
     }
 
     private static void viewCar(Scanner scanner) {
         CarRepository carRepository = new CarRepository();
         List<Car> cars = carRepository.findAll();
-        cars.forEach(carFromList -> System.out.println("\n ID: " + carFromList.getId() + "\n Model: " + carFromList.getModel() + "\n Plate Number: " + carFromList.getLicensePlate() + "\n Price per Day: " + carFromList.getPricePerDay()));
+        cars.forEach(carFromList -> System.out.println("\n ID: " + carFromList.getId() + "\n Model: " + carFromList.getModel() + "\n Plate Number: " + carFromList.getLicensePlate() + "\n Price per Day: " + carFromList.getPricePerDay() + "\n Station: " + carFromList.getStation()));
     }
 
     private static void deleteCar(Scanner scanner) {

@@ -5,8 +5,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import sda.academy.entities.Reservation;
+import sda.academy.entities.Reservation;
 import sda.academy.util.HibernateUtil;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class ReservationRepository {
@@ -77,5 +79,23 @@ public class ReservationRepository {
         }
         session.getTransaction().commit();
         session.close();
+    }
+
+    public Reservation allreadyBooked(LocalDate formatterStartDate, LocalDate formatterEndDate) {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String hql = "SELECT r FROM Reservation r WHERE r.startDate BETWEEN :formatterStartDate AND :formatterEndDate OR r.endDate BETWEEN :formatterStartDate AND :formatterEndDate";
+        Query<Reservation> query = session.createQuery(hql, Reservation.class);
+        query.setParameter("formatterStartDate",formatterStartDate);
+        query.setParameter("formatterEndDate",formatterEndDate);
+        List<Reservation> reservationList = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        if (reservationList.isEmpty()) {
+            return null;
+        } else {
+            return reservationList.get(0);
+        }
     }
 }

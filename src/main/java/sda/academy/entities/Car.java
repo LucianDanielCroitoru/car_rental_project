@@ -26,4 +26,7 @@ public class Car {
     private List<Reservation> reservationList = new ArrayList<>();
     @OneToMany (mappedBy = "car")
     private List<MaintenanceRecord> maintenanceRecordList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "station_id")
+    private Station station;
 }

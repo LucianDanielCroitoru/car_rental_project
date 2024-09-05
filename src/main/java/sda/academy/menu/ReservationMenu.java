@@ -2,7 +2,6 @@ package sda.academy.menu;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import sda.academy.entities.Car;
 import sda.academy.entities.Customer;
 import sda.academy.entities.MaintenanceRecord;
@@ -87,12 +86,19 @@ public class ReservationMenu {
         reservation.setStartDate(formatterStartDate);
         reservation.setEndDate(formatterEndDate);
         ReservationRepository reservationRepository = new ReservationRepository();
+        Reservation reservationCheck = reservationRepository.allreadyBooked(formatterStartDate, formatterEndDate);
         MaintenanceRecordRepository maintenanceRecordRepository = new MaintenanceRecordRepository();
-        MaintenanceRecord maintenanceRecord = maintenanceRecordRepository.validate(formatterStartDate,formatterEndDate);
-        if (maintenanceRecord == null) {
+        MaintenanceRecord maintenanceRecord = maintenanceRecordRepository.validate(formatterStartDate, formatterEndDate);
+        if (maintenanceRecord == null && reservationCheck == null) {
             reservationRepository.save(reservation);
         } else {
-            System.out.println("Reservation cannot be save!");
+            String statement = "Reservation could not be saved. Please choose another car.";
+            if (maintenanceRecord != null) {
+                System.out.println(statement + " Reason: car unavailable.");
+            }
+            if (reservationCheck != null) {
+                System.out.println(statement + " Reason: already booked.");
+            }
         }
     }
 
@@ -122,7 +128,21 @@ public class ReservationMenu {
         reservation.setStartDate(formatterStartDate);
         reservation.setEndDate(formatterEndDate);
         ReservationRepository reservationRepository = new ReservationRepository();
-        reservationRepository.update(reservation);
+        Reservation reservationCheck = reservationRepository.allreadyBooked(formatterStartDate, formatterEndDate);
+        MaintenanceRecordRepository maintenanceRecordRepository = new MaintenanceRecordRepository();
+        MaintenanceRecord maintenanceRecord = maintenanceRecordRepository.validate(formatterStartDate, formatterEndDate);
+        if (maintenanceRecord == null && reservationCheck == null) {
+            reservationRepository.update(reservation);
+        } else {
+            String statement = "";
+            if (maintenanceRecord != null) {
+                statement = " Reason: car unavailable.";
+            }
+            if (reservationCheck != null) {
+                statement = " Reason: already booked.";
+            }
+            System.out.println("Reservation could not be saved. Please choose another car." + statement);
+        }
     }
 
     private static void viewReservation(Scanner scanner) {
