@@ -6,6 +6,7 @@ import static sda.academy.menu.CarMenu.carMenu;
 import static sda.academy.menu.CustomerMenu.customerMenu;
 import static sda.academy.menu.MaintenanceMenu.maintenanceMenu;
 import static sda.academy.menu.ReservationMenu.reservationMenu;
+import static sda.academy.menu.StationMenu.stationMenu;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +23,8 @@ public class Main {
         System.out.println("2. Customers Menu");
         System.out.println("3. Reservations Menu");
         System.out.println("4. Maintenance Record Menu");
-        System.out.println("5. Exit");
+        System.out.println("5. Station Menu");
+        System.out.println("6. Exit");
         System.out.println("Enter your choice: ");
 }
 
@@ -45,6 +47,10 @@ public class Main {
                 break;
 
             case 5:
+                stationMenu(scanner);
+                break;
+
+            case 6:
                 exitMainMenu();
                 break;
         }

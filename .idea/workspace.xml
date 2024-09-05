@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28995a5-ebd8-4a0c-8437-ed68854a5498" name="Changes" comment="MaintenanceMenu, MaintenanceRecord and Repository created.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/sda/academy/entities/Station.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sda/academy/menu/StationMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sda/academy/repositories/StationRepository.java" afterDir="false" />
+    <list default="true" id="a28995a5-ebd8-4a0c-8437-ed68854a5498" name="Changes" comment="Station, StationMenu, StationRepository created and CarMenu updated.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sda/academy/entities/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sda/academy/entities/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sda/academy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sda/academy/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sda/academy/menu/CarMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sda/academy/menu/CarMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sda/academy/menu/ReservationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sda/academy/menu/ReservationMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sda/academy/repositories/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sda/academy/repositories/ReservationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725550018522</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Station, StationMenu, StationRepository created and CarMenu updated.">
+      <option name="closed" value="true" />
+      <created>1725561384226</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725561384226</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,6 +144,7 @@
     <MESSAGE value="Hibernate configuration." />
     <MESSAGE value="ReservationRepository created." />
     <MESSAGE value="MaintenanceMenu, MaintenanceRecord and Repository created." />
-    <option name="LAST_COMMIT_MESSAGE" value="MaintenanceMenu, MaintenanceRecord and Repository created." />
+    <MESSAGE value="Station, StationMenu, StationRepository created and CarMenu updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Station, StationMenu, StationRepository created and CarMenu updated." />
   </component>
 </project>
