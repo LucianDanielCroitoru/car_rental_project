@@ -21,4 +21,9 @@ public class Car {
     private String model;
 
     private int pricePerDay;
+
+    @OneToMany (mappedBy = "car")
+    private List<Reservation> reservationList = new ArrayList<>();
+    @OneToMany (mappedBy = "car")
+    private List<MaintenanceRecord> maintenanceRecordList = new ArrayList<>();
 }

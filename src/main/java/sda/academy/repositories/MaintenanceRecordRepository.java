@@ -4,78 +4,74 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import sda.academy.entities.Reservation;
+import sda.academy.entities.MaintenanceRecord;
 import sda.academy.util.HibernateUtil;
 
+import java.time.LocalDate;
 import java.util.List;
 
-public class ReservationRepository {
-    public void save(Reservation reservation) {
+public class MaintenanceRecordRepository {
+    public void save(MaintenanceRecord maintenanceRecord) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Transaction transaction = session.getTransaction();
-        session.save(reservation);
+        session.save(maintenanceRecord);
         transaction.commit();
         session.close();
     }
 
-    public void update(Reservation reservation) {
+    public void update(MaintenanceRecord maintenanceRecord) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Transaction transaction = session.getTransaction();
-        session.update(reservation);
+        session.update(maintenanceRecord);
         transaction.commit();
         session.close();
     }
 
-    public void delete(Reservation reservation) {
+    public MaintenanceRecord findById(int id) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Transaction transaction = session.getTransaction();
-        session.delete(reservation);
-        transaction.commit();
-        session.close();
-    }
-
-    public Reservation findById(int id) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        Reservation reservation = session.get(Reservation.class,id);
+        MaintenanceRecord maintenanceRecord = session.get(MaintenanceRecord.class,id);
         session.getTransaction().commit();
         session.close();
-        return reservation;
+        return maintenanceRecord;
     }
 
-    public List<Reservation> findAll() {
+    public List<MaintenanceRecord> findAll() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Transaction transaction = session.getTransaction();
 
-        String hql = "from Reservation";
-        String hql2 = "SELECT r from Reservation r";
-        Query<Reservation> query = session.createQuery(hql, Reservation.class);
-        List<Reservation> reservations = query.getResultList();
+        String hql = "from MaintenanceRecord";
+        String hql2 = "SELECT m from MaintenanceRecord m";
+        Query<MaintenanceRecord> query = session.createQuery(hql, MaintenanceRecord.class);
+        List<MaintenanceRecord> maintenanceRecords = query.getResultList();
 
         transaction.commit();
         session.close();
-        return reservations;
+        return maintenanceRecords;
     }
 
-    public void delete(int id) {
+    public MaintenanceRecord validate(LocalDate formatterStartDate, LocalDate formatterEndDate) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
-        Reservation reservation = findById(id);
-        if(reservation != null) {
-            session.delete(reservation);
+        String hql = "SELECT m FROM MaintenanceRecord m WHERE m.maintenanceDate BETWEEN :formatterStartDate AND :formatterEndDate";
+        Query<MaintenanceRecord> query = session.createQuery(hql, MaintenanceRecord.class);
+        query.setParameter("formatterStartDate",formatterStartDate);
+        query.setParameter("formatterEndDate",formatterEndDate);
+        List<MaintenanceRecord> maintenanceRecordList = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        if (maintenanceRecordList.isEmpty()) {
+            return null;
+        } else {
+            return maintenanceRecordList.get(0);
         }
-        session.getTransaction().commit();
-        session.close();
     }
 }

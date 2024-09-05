@@ -22,6 +22,6 @@ public class Customer {
     @Column(unique = true)
     private int driverLicenseNumber;
 
-    @OneToMany (mappedBy = "customer")
-    List<Reservation> reservationList = new ArrayList<>();
+    @OneToMany (mappedBy = "customer",fetch = FetchType.EAGER)
+    private List<Reservation> reservationList = new ArrayList<>();
 }
