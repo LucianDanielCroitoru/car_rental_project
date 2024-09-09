@@ -2,14 +2,8 @@ package sda.academy.menu;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import sda.academy.entities.Car;
-import sda.academy.entities.Customer;
-import sda.academy.entities.MaintenanceRecord;
-import sda.academy.entities.Reservation;
-import sda.academy.repositories.CarRepository;
-import sda.academy.repositories.CustomerRepository;
-import sda.academy.repositories.MaintenanceRecordRepository;
-import sda.academy.repositories.ReservationRepository;
+import sda.academy.entities.*;
+import sda.academy.repositories.*;
 import sda.academy.util.HibernateUtil;
 
 import java.time.LocalDate;
@@ -73,6 +67,13 @@ public class ReservationMenu {
         int customer_id = Integer.parseInt(scanner.nextLine());
         CustomerRepository customerRepository = new CustomerRepository();
         Customer customer = customerRepository.findById(customer_id);
+        System.out.println("Pick-up Station ID: ");
+        int pickUpStation_id = Integer.parseInt(scanner.nextLine());
+        StationRepository stationRepository = new StationRepository();
+        Station pickUpStation = stationRepository.findById(pickUpStation_id);
+        System.out.println("Drop-off Station ID: ");
+        int dropOffStation_id = Integer.parseInt(scanner.nextLine());
+        Station dropOffStation = stationRepository.findById(dropOffStation_id);
         System.out.println("Pick-up Date (YYYY-MM-DD): ");
         String startDate = scanner.nextLine();
         LocalDate formatterStartDate = LocalDate.parse(startDate);
@@ -83,6 +84,8 @@ public class ReservationMenu {
         reservation.setReservationDate(reservationDate);
         reservation.setCar(car);
         reservation.setCustomer(customer);
+        reservation.setPickUpStation(pickUpStation);
+        reservation.setDropOffStation(dropOffStation);
         reservation.setStartDate(formatterStartDate);
         reservation.setEndDate(formatterEndDate);
         ReservationRepository reservationRepository = new ReservationRepository();

@@ -23,4 +23,10 @@ public class Station {
 
     @OneToMany (mappedBy = "station")
     private List<Car> cars = new ArrayList<>();
+
+    @OneToMany (mappedBy = "pickUpStation")
+    private List<Reservation> pickUpStations = new ArrayList<>();
+
+    @OneToMany (mappedBy = "dropOffStation")
+    private List<Reservation> dropOffStations = new ArrayList<>();
 }

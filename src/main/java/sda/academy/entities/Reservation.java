@@ -34,4 +34,12 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
+    @ManyToOne
+    @JoinColumn(name = "pickUpStation_id")
+    private Station pickUpStation;
+
+    @ManyToOne
+    @JoinColumn(name = "dropOffStation_id")
+    private Station dropOffStation;
 }

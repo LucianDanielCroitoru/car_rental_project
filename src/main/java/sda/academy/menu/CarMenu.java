@@ -27,8 +27,9 @@ public class CarMenu {
         System.out.println("1. Register cars");
         System.out.println("2. Edit cars");
         System.out.println("3. View cars");
-        System.out.println("4. Delete cars");
-        System.out.println("5. Exit");
+        System.out.println("4. View cars by Stations");
+        System.out.println("5. Delete cars");
+        System.out.println("6. Exit");
         System.out.println("Enter your choice: ");
     }
 
@@ -47,10 +48,14 @@ public class CarMenu {
                 break;
 
             case 4:
-                deleteCar(scanner);
+                viewCarByStation(scanner);
                 break;
 
             case 5:
+                deleteCar(scanner);
+                break;
+
+            case 6:
                 exitMenuCar(scanner);
                 break;
         }
@@ -101,7 +106,27 @@ public class CarMenu {
     private static void viewCar(Scanner scanner) {
         CarRepository carRepository = new CarRepository();
         List<Car> cars = carRepository.findAll();
-        cars.forEach(carFromList -> System.out.println("\n ID: " + carFromList.getId() + "\n Model: " + carFromList.getModel() + "\n Plate Number: " + carFromList.getLicensePlate() + "\n Price per Day: " + carFromList.getPricePerDay() + "\n Station: " + carFromList.getStation()));
+        cars.forEach(carFromList -> {
+            String stationName = null;
+            if (carFromList.getStation() != null) {
+                stationName = carFromList.getStation().getLocationName();
+            }
+            System.out.println("\n ID: " + carFromList.getId() + "\n Model: " + carFromList.getModel() + "\n Plate Number: " + carFromList.getLicensePlate() + "\n Price per Day: " + carFromList.getPricePerDay() + "\n Station: " + stationName);
+        });
+    }
+
+    private static void viewCarByStation(Scanner scanner) {
+        CarRepository carRepository = new CarRepository();
+        System.out.println("Introduce the station's ID: ");
+        int station_id = Integer.parseInt(scanner.nextLine());
+        List<Car> cars = carRepository.findAllCarsByStation(station_id);
+        cars.forEach(carFromList -> {
+            String stationName = null;
+            if (carFromList.getStation() != null) {
+                stationName = carFromList.getStation().getLocationName();
+            }
+            System.out.println("\n ID: " + carFromList.getId() + "\n Model: " + carFromList.getModel() + "\n Plate Number: " + carFromList.getLicensePlate() + "\n Price per Day: " + carFromList.getPricePerDay() + "\n Station: " + stationName);
+        });
     }
 
     private static void deleteCar(Scanner scanner) {

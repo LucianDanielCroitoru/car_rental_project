@@ -70,17 +70,19 @@ public class CustomerMenu {
     }
 
     private static void editCustomer(Scanner scanner) {
-        System.out.println("Enter customer's FirstName: ");
+        System.out.println("Enter customer's ID: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.println("Edit customer's FirstName: ");
         String firstName = scanner.nextLine();
-        System.out.println("Enter customer's LastName: ");
+        System.out.println("Edit customer's LastName: ");
         String lastName = scanner.nextLine();
-        System.out.println("Enter driver's license number: ");
+        System.out.println("Edit driver's license number: ");
         int driverLicenseNumber = Integer.parseInt(scanner.nextLine());
-        Customer customer = new Customer();
+        CustomerRepository customerRepository = new CustomerRepository();
+        Customer customer = customerRepository.findById(id);
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
         customer.setDriverLicenseNumber(driverLicenseNumber);
-        CustomerRepository customerRepository = new CustomerRepository();
         customerRepository.update(customer);
     }
 
